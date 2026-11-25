@@ -1,4 +1,4 @@
-main:
+$:
   push:
     - imports: https://cnb.cool/cnb.cc/secret/-/blob/main/env.github.yml
       stages:
@@ -9,7 +9,6 @@ main:
             username: ${GITHUB_USER}
             password: ${GITHUB_TOKEN}
 
-$:
   vscode:
     - docker:
         image: docker.cnb.cool/cnb.cc/docker/debian-vnc
