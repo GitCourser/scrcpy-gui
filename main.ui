@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main</class>
+ <widget class="QDialog" name="main">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>440</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>440</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>440</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Microsoft YaHei UI</family>
+   </font>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>scrcpy GUI</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>scrcpy 路径:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="strPath">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="placeholderText">
+        <string>可拖放目录或文件, 与 scrcpy 同目录可留空</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnPath">
+       <property name="text">
+        <string>选择目录</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="minimumSize">
+        <size>
+         <width>188</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>192</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>连接</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>IP:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="strIP">
+          <property name="inputMask">
+           <string>000.000.000.000</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>端口:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="strPort">
+          <property name="inputMask">
+           <string>00000</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="isScan">
+       <property name="minimumSize">
+        <size>
+         <width>188</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>192</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>启动时扫描上次连接ip的指定范围内端口
+(因无线调试每次会随机开端口)</string>
+       </property>
+       <property name="title">
+        <string>扫描</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_13">
+          <property name="toolTip">
+           <string>线程越多扫描越快,但数量与内存有关
+ 8G内存: 800
+16G内存:1600</string>
+          </property>
+          <property name="text">
+           <string>线程:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QLineEdit" name="strPortRange">
+          <property name="toolTip">
+           <string>例: 36000-44000</string>
+          </property>
+          <property name="inputMask">
+           <string>00000-00000</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QDoubleSpinBox" name="numTimeout">
+          <property name="toolTip">
+           <string>越小速度越快,但漏过的端口越多,与wifi连接速度有关</string>
+          </property>
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="minimum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>5.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+          <property name="value">
+           <double>1.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLabel" name="label_5">
+          <property name="toolTip">
+           <string>越小速度越快,但漏过的端口越多,与wifi连接速度有关</string>
+          </property>
+          <property name="text">
+           <string>超时:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="2">
+         <widget class="QLineEdit" name="strUnPort">
+          <property name="toolTip">
+           <string>扫描范围内非调试用常开端口
+多个用空格分隔</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QSpinBox" name="numThread">
+          <property name="toolTip">
+           <string>线程越多扫描越快,但数量与内存有关
+ 8G内存: 800
+16G内存:1600</string>
+          </property>
+          <property name="maximum">
+           <number>6000</number>
+          </property>
+          <property name="singleStep">
+           <number>100</number>
+          </property>
+          <property name="value">
+           <number>400</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="toolTip">
+           <string>例: 36000-44000</string>
+          </property>
+          <property name="text">
+           <string>端口范围:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="toolTip">
+           <string>扫描范围内非调试用常开端口
+多个用空格分隔</string>
+          </property>
+          <property name="text">
+           <string>屏蔽端口:</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="isPair">
+       <property name="minimumSize">
+        <size>
+         <width>188</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>192</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>无线调试首次连接需配对
+具体看手机(Android 11以上)
+配对时ip,端口,配对端口,配对码4项都要填</string>
+       </property>
+       <property name="title">
+        <string>配对</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>配对端口:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="strPairPort">
+          <property name="inputMask">
+           <string>00000</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>配对码:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="strPairCode">
+          <property name="inputMask">
+           <string>000000</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0">
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string>选项</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="isTop">
+        <property name="text">
+         <string>置顶</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="isSw">
+        <property name="text">
+         <string>熄屏且禁止休眠</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QCheckBox" name="isPoweroff">
+        <property name="text">
+         <string>退出后锁屏</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QCheckBox" name="isRecord">
+        <property name="toolTip">
+         <string>录像文件以日期保存到 rec 目录</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox:checked{color: red;}</string>
+        </property>
+        <property name="text">
+         <string>录屏</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="isHEVC">
+        <property name="toolTip">
+         <string>scrcpy 2.0 以上支持</string>
+        </property>
+        <property name="text">
+         <string>H.265</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="isNoAudio">
+        <property name="toolTip">
+         <string>默认为启用音频转发
+需 scrcpy 2.0 与 Android 11</string>
+        </property>
+        <property name="text">
+         <string>禁用音频转发</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QCheckBox" name="isNoMousehover">
+        <property name="toolTip">
+         <string/>
+        </property>
+        <property name="text">
+         <string>禁用鼠标悬停</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QCheckBox" name="isRecordAudio">
+        <property name="toolTip">
+         <string>录音文件以 AAC 格式保存到 rec 目录</string>
+        </property>
+        <property name="text">
+         <string>仅录音</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="toolTip">
+         <string>默认为左Alt键: lalt
+可选值: lctrl、rctrl、lalt、ralt、lsuper、rsuper</string>
+        </property>
+        <property name="text">
+         <string>热键:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>高度:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_11">
+        <property name="toolTip">
+         <string>默认码率是 8 Mbps</string>
+        </property>
+        <property name="text">
+         <string>码率(Mbps):</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>缓冲(毫秒):</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLineEdit" name="strKey">
+        <property name="maximumSize">
+         <size>
+          <width>125</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>默认为左Alt键: lalt
+可选值: lctrl、rctrl、lalt、ralt、lsuper、rsuper</string>
+        </property>
+        <property name="inputMask">
+         <string>aaaaaa</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="strSize">
+        <property name="maximumSize">
+         <size>
+          <width>125</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="inputMask">
+         <string>0000</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLineEdit" name="strBitrate">
+        <property name="maximumSize">
+         <size>
+          <width>125</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>默认码率是 8 Mbps</string>
+        </property>
+        <property name="inputMask">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="strBuffer">
+        <property name="maximumSize">
+         <size>
+          <width>125</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="inputMask">
+         <string>000</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>&lt;a href=&quot;https://github.com/Genymobile/scrcpy&quot;&gt;scrcpy v3.2&lt;/a&gt;</string>
+       </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnStart">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Microsoft YaHei UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>启 动</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_15">
+       <property name="text">
+        <string>by Courser</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>btnStart</tabstop>
+  <tabstop>strPath</tabstop>
+  <tabstop>strIP</tabstop>
+  <tabstop>strPort</tabstop>
+  <tabstop>strKey</tabstop>
+  <tabstop>strSize</tabstop>
+  <tabstop>strBitrate</tabstop>
+  <tabstop>strBuffer</tabstop>
+  <tabstop>isTop</tabstop>
+  <tabstop>isHEVC</tabstop>
+  <tabstop>isSw</tabstop>
+  <tabstop>isNoAudio</tabstop>
+  <tabstop>isPoweroff</tabstop>
+  <tabstop>isRecord</tabstop>
+  <tabstop>isScan</tabstop>
+  <tabstop>strPortRange</tabstop>
+  <tabstop>strUnPort</tabstop>
+  <tabstop>numThread</tabstop>
+  <tabstop>numTimeout</tabstop>
+  <tabstop>isPair</tabstop>
+  <tabstop>strPairPort</tabstop>
+  <tabstop>strPairCode</tabstop>
+  <tabstop>btnPath</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
