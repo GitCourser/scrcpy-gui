@@ -1,0 +1,42 @@
+{
+  "process_windows.go": [
+    {
+      "id": "notebook-1795503793844_7ixwhqhgk",
+      "filePath": "process_windows.go",
+      "note": "启动 scrcpy 时只能在 SysProcAttr 里设 CreationFlags: CREATE_NO_WINDOW；不能设 HideWindow，因为它会把 SW_HIDE 写进 STARTUPINFO，SDL2 的首个窗口按该值创建，scrcpy 的画面窗口会一直隐藏。",
+      "createdAt": "2026-11-24T15:03:13.844",
+      "updatedAt": "2026-11-24T15:03:13.844"
+    }
+  ],
+  "ui.go": [
+    {
+      "id": "notebook-1795575601691_a20whn05n",
+      "filePath": "ui.go",
+      "note": "图标按钮写法：ui.Button(c, \"扫描端口\").IconOnly().Icon(scanIcon)，标签仍作为可访问名称，但不再绘制文字。",
+      "createdAt": "2026-11-25T11:00:01.691",
+      "updatedAt": "2026-11-25T11:00:01.691"
+    },
+    {
+      "id": "notebook-1795575601691_g8tkpt5f0",
+      "filePath": "ui.go",
+      "note": "连接/配对卡片靠 ui.Spacer(c) 吸收行拉伸出的多余高度；不要换成固定 Gap，否则窗口较矮或主题变化时底部会重新出现空白。",
+      "createdAt": "2026-11-25T11:00:01.691",
+      "updatedAt": "2026-11-25T11:00:01.691"
+    },
+    {
+      "id": "notebook-1795575601691_qovsgft13",
+      "filePath": "ui.go",
+      "note": "录屏变红只需对 Checkbox 调 .Color(theme.Danger)：viva 的 caption 绘制会取元素颜色，复选框方块本身仍用主题色。",
+      "createdAt": "2026-11-25T11:00:01.691",
+      "updatedAt": "2026-11-25T11:00:01.691"
+    },
+    {
+      "id": "notebook-1795505483546_9xl9hucu5",
+      "filePath": "ui.go",
+      "note": "回车启动由两处组成：page() 里的 ui.Shortcut(c, 0, \"enter\") 负责焦点不在输入框时；输入框会吞掉无修饰键，所以每个 TextField 还要用 OnKey(m.enterStarts) 自己把回车转成 m.start()。",
+      "createdAt": "2026-11-24T15:31:23.545",
+      "updatedAt": "2026-11-24T15:31:23.545"
+    }
+  ],
+  "window_style_windows.go": []
+}
